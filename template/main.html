@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  
+  <style>
+    * {
+      margin: 0;
+    }
+
+    body {
+      background-color: #131313;
+    }
+
+    h1{
+      color: white;
+    }
+
+    h3{
+      color: white;
+    }
+
+    input[type=text], select {
+    width: 30%;
+    background-color: #7d746d;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #817066;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: white;
+    }
+
+    input[type=submit] {
+    width: 10%;
+    background-color: #8b00ff;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+    background-color: #8a2be2;
+    }
+
+
+  .block {
+    margin-top:200px
+  }
+
+  .container {
+    position: absolute;
+    top: 220px;
+    right: 15%;
+    font-weight: bold;
+  }
+
+  .container div{
+    margin-top: 5px;
+  }
+
+  .text {
+    padding: 5px;
+    color: #7d746d;
+    font-size: 20px;
+  }
+
+  </style>
+</head>
+<body>
+
+
+
+<div class="block">
+  <center>
+    <h1>Чат на Джанго</h1><br><br>
+  <form id="post-form" method="POST" action="checkview">
+    {% csrf_token %}
+    <h3>Название комнаты</h3>
+    <input type="text" name="room_name" id="room_name" width="100px" /><br>
+    <h3>Имя пользователя</h3>
+    <input type="text" name="username" id="username" width="100px" /><br><br>
+    <input type="submit" value="Войти в комнату">
+  </form>
+  </center>
+</div>
+
+<div class="container">
+  <h3>Список созданных комнат:</h3><br>
+  {% for el in chats %}
+    <div>
+      <span class="text">{{ el.name }}</span>
+    </div>
+  {% endfor %}
+</div>
+
+</body>
+
+
+</html>
